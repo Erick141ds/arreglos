@@ -2,6 +2,15 @@
 import java.util.Scanner;
 
 public class Arreglos {
+    public static void leercalificaciones(){
+
+
+    }
+
+    public static void evaluarcalificaciones(){
+
+        
+    }
     public static void main(String[] args) {
         double[] calificaciones = new double[5];
         Scanner  sc = new Scanner(System.in);
