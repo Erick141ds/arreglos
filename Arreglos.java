@@ -3,10 +3,22 @@ import java.util.Scanner;
 
 public class Arreglos {
 
-    public static int T = 25; //tamaño maximo del grupo 
+    public static int t = 25; //tamaño maximo del grupo 
 
-    public static void leercalificaciones(){
+    public static double [] leercalificaciones(double[]calificaciones){
+        Scanner sc = new Scanner(System.in);
 
+        for (int i = 0; i<calificaciones.length; i++){
+            System.out.println("Escribe calificaciones[" + i + "]: ");
+            calificaciones[i] = sc.nextDouble();
+        }
+        return calificaciones;
+
+    }
+
+    public static void imprimirCalificaciones(double [] calificaciones){
+        for( double calificacion : calificaciones)
+        System.out.println(calificacion);
 
     }
 
@@ -14,28 +26,54 @@ public class Arreglos {
 
     }
     public static void main(String[] args) {
-        double[] Parcial1, Parcial2, Parcial3, Parcial4; //declarar los arreglos
+        double[] parcial1, parcial2, parcial3, parcial4; //declarar los arreglos
         double[] Promedio;
-        boolean[] Aprobados; 
-        double[] calificaciones = new double[5]; // declarando y construllendo el arreglo
+        boolean[] Aprobados;
         Scanner  sc = new Scanner(System.in);
-        for (int i = 0; i<calificaciones.length; i++){
-            System.out.println("Escribe calificaciones[" + i + "]: ");
-            calificaciones[i] = sc.nextDouble();
-        }
-        //No se imprime el contenido de todas las casillas del arreglo solo se imprime la direccion 
-        //de memoria donde empieza el arreglo
-        //System.out.println("Calificaciones: " + calificaciones);
-        
-        //imprecion usando el for extendido
-        System.out.println("Contenido del arreglo calificaciones: z");
-        for( double calificacion : calificaciones)
-            System.out.println(calificacion);
-        System.out.println("Contenido de calificaciones: ");
-        // Impresion con el for tradicional
-        for ( int i=0; i<calificaciones.length; i++)
-        System.out.println(calificaciones[i]);
-        
+        System.out.println("Programa que calcula el promedio final de un grupo ");
+        System.out.println("Escribe el tamaño del grupo: ");
+        t = sc.nextInt();
+
+        //inicialisar los arreglos
+        parcial1 = new double[t];
+        parcial2 = new double[t];
+        parcial3 = new double[t];
+        parcial4 = new double[t];
+        Promedio = new double[t];
+        Aprobados = new boolean[t];
+
+        // Leer las calificaciones de los parciales de cada alumno 
+
+            System.out.println("----------------------------------------------");
+            System.out.println("lectura de calificaciones del parcial 1 " );
+            parcial1 = leercalificaciones(parcial1);
+            System.out.println("----------------------------------------------");
+            System.out.println("lectura de calificaciones del parcial 2 " );
+            parcial2 = leercalificaciones(parcial2);
+            System.out.println("----------------------------------------------");
+            System.out.println("lectura de calificaciones del parcial 3 " );
+            parcial3 = leercalificaciones(parcial3);
+            System.out.println("----------------------------------------------");
+            System.out.println("lectura de calificaciones del parcial 4 " );
+            parcial4 = leercalificaciones(parcial4);
+
+            //mostrar calificaciones de los parciales 
+            System.out.println("----------------------------------------------");
+            System.out.println("calificaciones del parcial 1 " );
+            imprimirCalificaciones(parcial1);
+            System.out.println("----------------------------------------------");
+            System.out.println("calificaciones del parcial 2 " );
+            imprimirCalificaciones(parcial2);
+            System.out.println("----------------------------------------------");
+            System.out.println("calificaciones del parcial 3 " );
+            imprimirCalificaciones(parcial3);
+            System.out.println("----------------------------------------------");
+            System.out.println("calificaciones del parcial 4 " );
+            imprimirCalificaciones(parcial4);
+
+
+
+
         sc.close();
     }
 }
