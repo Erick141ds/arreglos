@@ -5,13 +5,15 @@ public class Arreglos {
 
     public static int t = 25; //tamaño maximo del grupo 
 
-    public static double [] leercalificaciones(double[]calificaciones){
+    public static double [] leercalificaciones(){
+        double[] calificaciones = new double[t];
         Scanner sc = new Scanner(System.in);
 
         for (int i = 0; i<calificaciones.length; i++){
             System.out.println("Escribe calificaciones[" + i + "]: ");
             calificaciones[i] = sc.nextDouble();
         }
+        sc.close();
         return calificaciones;
 
     }
@@ -21,8 +23,22 @@ public class Arreglos {
         System.out.println(calificacion);
 
     }
+    public static double[] obtenerPromedio(double[] p1, double[] p2, double[] p3, double[] p4){
+        double[] resultado = new double[t];
+        for ( int i=0; i<resultado.length; i++)
+            resultado[i] = (p1[i] + p2[i] + p3[i] + p4[i])/4;
+        return resultado;
+    }
 
-    public static void evaluarcalificaciones(){
+    public static boolean [] evaluarcalificaciones(double[] prom){
+        boolean[] resultado = new boolean[t];
+        for(int i=0; i<prom.length; i++){
+            if(prom[i] >= 7)
+            resultado[i] = true;
+            else
+            resultado[i] = false;
+        }
+        return resultado;
 
     }
     public static void main(String[] args) {
@@ -46,16 +62,18 @@ public class Arreglos {
 
             System.out.println("----------------------------------------------");
             System.out.println("lectura de calificaciones del parcial 1 " );
-            parcial1 = leercalificaciones(parcial1);
+            parcial1 = leercalificaciones();
             System.out.println("----------------------------------------------");
             System.out.println("lectura de calificaciones del parcial 2 " );
-            parcial2 = leercalificaciones(parcial2);
+            parcial2 = leercalificaciones();
             System.out.println("----------------------------------------------");
             System.out.println("lectura de calificaciones del parcial 3 " );
-            parcial3 = leercalificaciones(parcial3);
+            parcial3 = leercalificaciones();
             System.out.println("----------------------------------------------");
             System.out.println("lectura de calificaciones del parcial 4 " );
-            parcial4 = leercalificaciones(parcial4);
+            parcial4 = leercalificaciones();
+
+            Promedio = obtenerPromedio(parcial1, parcial2, parcial3, parcial4);
 
             //mostrar calificaciones de los parciales 
             System.out.println("----------------------------------------------");
@@ -70,9 +88,8 @@ public class Arreglos {
             System.out.println("----------------------------------------------");
             System.out.println("calificaciones del parcial 4 " );
             imprimirCalificaciones(parcial4);
-
-
-
+            System.out.println("Promedio individual" );
+            imprimirCalificaciones(Promedio);
 
         sc.close();
     }
