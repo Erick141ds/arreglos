@@ -13,7 +13,6 @@ public class Arreglos {
             System.out.println("Escribe calificaciones[" + i + "]: ");
             calificaciones[i] = sc.nextDouble();
         }
-        sc.close();
         return calificaciones;
 
     }
@@ -40,6 +39,10 @@ public class Arreglos {
         }
         return resultado;
 
+    }
+    public static void imprimirResultados(boolean[] resultados){
+        for( boolean resultado : resultados)
+        System.out.println(resultado);
     }
     public static void main(String[] args) {
         double[] parcial1, parcial2, parcial3, parcial4; //declarar los arreglos
@@ -72,8 +75,10 @@ public class Arreglos {
             System.out.println("----------------------------------------------");
             System.out.println("lectura de calificaciones del parcial 4 " );
             parcial4 = leercalificaciones();
-
+            //calcular cada promedio indivial
             Promedio = obtenerPromedio(parcial1, parcial2, parcial3, parcial4);
+            //evaluar  calificaciones de aprovados
+            Aprobados = evaluarcalificaciones(Promedio);
 
             //mostrar calificaciones de los parciales 
             System.out.println("----------------------------------------------");
@@ -90,6 +95,8 @@ public class Arreglos {
             imprimirCalificaciones(parcial4);
             System.out.println("Promedio individual" );
             imprimirCalificaciones(Promedio);
+            System.out.println("Aprobados" );
+            imprimirResultados(Aprobados);
 
         sc.close();
     }
